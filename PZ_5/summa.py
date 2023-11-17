@@ -1,9 +1,9 @@
 def summ_namber(number1, number2):
     contenner = 0
-    
+    # цикл от числа1 до числа2
     for i in range(number1, number2+1):
         contenner += i
-    
+    # вернуть мой контенер собраный
     return contenner
 
 number1 = int(input('Введите начало числового ряда: '))
