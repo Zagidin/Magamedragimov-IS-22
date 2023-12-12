@@ -17,5 +17,5 @@ def powerl(a, b):
 
 
 num1, num2, num3 = float(input('Введите число A: ')), float(input('Введите число B: ')), int(input('Введите число С: '))
-stepen = int(input('Введите степень: '))
+stepen = int(input('Введите степень(P): '))
 print(f'Результат первого условия: {powerl(num1, num2)}\n\nРезультат второго условия:\n\t{powerl(num1, stepen)}\n\t{powerl(num2, stepen)}\n\t{powerl(num3, stepen)}')
