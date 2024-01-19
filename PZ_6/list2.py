@@ -3,6 +3,7 @@
 содержит все числа от 1 до N, то вывести 0; в противном случае вывести номер
 первого недопустимого элемента.
 """
+
 len_list = int(input('Введите размер списка N: '))
 
 my_list_equally = list()
@@ -20,4 +21,7 @@ else:
         if my_list[i] != my_list_equally[i]:
             counter += str(my_list[i]) + ' '
 
-    print(f'Отличающийся элемент из вашего списка {my_list} --> {counter}\nОна не совпадает с {my_list_equally}')
+    # Числа преобразуем в список
+    new_list = [int(num) for num in counter.split()]
+    
+    print(f'\nОтличающийся элемент из вашего списка {my_list} --> {counter}\n\t\t   Она не совпадает с {my_list_equally}\n\nПервый недопустимый элемент --> {new_list[0]}\n')
