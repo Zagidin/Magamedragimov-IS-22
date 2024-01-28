@@ -1,0 +1,3 @@
+Positive elements: [2, 6, 1, 4, 10, 7]
+The number of positive numbers: 6
+The sum of positive numbers: 30
