@@ -1,3 +1,0 @@
-Negative elements: [-9, -4, -1, -1]
-The number of negative numbers: 4
-the average value of the numbers: -3.75

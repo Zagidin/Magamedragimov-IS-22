@@ -34,7 +34,7 @@ with open('PZ_11/fail_1.txt', 'w') as fail_1:
  
     quantity_negative_digit = len(num_negative) 
      
-    fail_1.write(f'Negative elements: {str(num_negative)}\nThe number of negative numbers: {quantity_negative_digit}\nthe average value of the numbers: {sum(num_negative) / quantity_negative_digit}') 
+    fail_1.write(f'Отрицательные элементы: {str(num_negative)}\nКоличество отрицательных элементов: {quantity_negative_digit}\nСреднее арифметическое: {sum(num_negative) / quantity_negative_digit}') 
  
 with open('PZ_11/fail_2.txt', 'w') as fail_2: 
  
@@ -48,6 +48,6 @@ with open('PZ_11/fail_2.txt', 'w') as fail_2:
  
     quantity_positive_digit = len(num_positive) 
      
-    fail_2.write(f'Positive elements: {str(num_positive)}\nThe number of positive numbers: {quantity_positive_digit}\nThe sum of positive numbers: {sum(num_positive)}') 
+    fail_2.write(f'Положительные элементы: {str(num_positive)}\nКоличество положительных элементов: {quantity_positive_digit}\nСумма положительных элементов: {sum(num_positive)}') 
  
 print(f"\nВаш список: {numbers}\n")
