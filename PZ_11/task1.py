@@ -16,38 +16,38 @@
 
 from random import randint 
  
-numbers = [] 
- 
-for i in range(10): 
-    i = randint(-10, 10) 
-    numbers.append(i) 
+list_one = [randint(-10, 10) for _ in range(10)] 
+list_two = [randint(-10, 10) for _ in range(10)]
  
 with open('PZ_11/fail_1.txt', 'w') as fail_1: 
-     
-    num_negative = [] 
- 
-    for el in numbers: 
-        if el < 0: 
-            num_negative.append(el) 
-        else: 
-            continue 
- 
-    quantity_negative_digit = len(num_negative) 
-     
-    fail_1.write(f'Отрицательные элементы: {str(num_negative)}\nКоличество отрицательных элементов: {quantity_negative_digit}\nСреднее арифметическое: {sum(num_negative) / quantity_negative_digit}') 
- 
-with open('PZ_11/fail_2.txt', 'w') as fail_2: 
- 
-    num_positive = [] 
- 
-    for j in numbers: 
-        if j > 0: 
-            num_positive.append(j) 
-        else: 
-            continue 
- 
-    quantity_positive_digit = len(num_positive) 
-     
-    fail_2.write(f'Положительные элементы: {str(num_positive)}\nКоличество положительных элементов: {quantity_positive_digit}\nСумма положительных элементов: {sum(num_positive)}') 
- 
-print(f"\nВаш список: {numbers}\n")
+    fail_1.write(f"Первый список:  {str(list_one)}")
+
+with open('PZ_11/fail_2.txt', 'w') as fail_2:
+    fail_2.write(f"Второй список:  {str(list_two)}")
+    
+    
+with open('PZ_11/all_file.txt', 'w') as all_file:
+    negative_list = []
+    positive_list = []
+    
+    for el in list_one:
+        if el < 0:
+            negative_list.append(el)
+        else:
+            continue
+    for el in list_two:
+        if el > 0:
+            positive_list.append(el)
+        else:
+            continue
+    
+    all_file.write(
+        f"Содержимое первого файла: {list_one}\n"
+        f"Отрицательные элементы: {negative_list}\n"
+        f"Количество отрицательных элементов: {len(negative_list)}\n"
+        f"Среднее арифметическое: {sum(list_one) / len(list_one)}\n\n"
+        f"Содержимое второго файла: {list_two}\n"
+        f"Положительные элементы: {positive_list}\n"
+        f"Количество положитльных элементов: {len(positive_list)}\n"
+        f"Сумма положительных элементов: {sum(positive_list)}"
+    )
