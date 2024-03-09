@@ -2,12 +2,7 @@
 В матрице найти минимальный элемент в предпоследней строке.
 """
 
-matrix = [
-    [i for i in range(4)],
-    [i for i in range(1, 5)],
-    [i for i in range(2, 6)],
-    [i for i in range(3, 7)]
-]
+matrix = [[j + 1*i for j in range(4)] for i in range(4)]
 
 print("\nМатрица 4х4:")
 
