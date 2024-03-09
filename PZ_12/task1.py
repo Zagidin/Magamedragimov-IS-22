@@ -9,7 +9,9 @@ two_list_numbers = [j for j in range(5, 10)]
 unique_elements = list(set(one_list_numbers + two_list_numbers))
 
 print(
-    "\nРазличные элементы:",
+    "Первая последователность: ", *one_list_numbers,
+    "\nВторая последовательность: ", *two_list_numbers,
+    f"\n\nРазличные элементы:",
     *unique_elements,
-    f"\nСреднее арифметическое: {sum(unique_elements) / len(unique_elements)}"
+    f"\nСреднее арифметическое: {sum(unique_elements) / len(unique_elements)}\n"
 )
