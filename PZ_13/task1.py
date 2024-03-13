@@ -9,4 +9,4 @@ print("\nМатрица 4х4:")
 for matrix_num in matrix:
     print(" ", *matrix_num)
 
-print(f"Минимальное число из предпоследней строки: {min(matrix[2])}")
+print(f"Минимальное число из предпоследней строки: {min(matrix[len(matrix) - 2])}")
