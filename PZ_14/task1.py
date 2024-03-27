@@ -1,38 +1,43 @@
-"""
-В исходном текстовом файле (hotline.txt) после фразы «Горячая линия» добавить
+"""В исходном текстовом файле (hotline.txt) после фразы «Горячая линия» добавить
 фразу «Министерства образования Ростовской области», посчитать количество
 произведённых добавлений. Сколько номеров телефонов заканчивается на «03»,
 «50». Вывести номера телефонов горячих линий, связанных с ЕГЭ/ГИА.
 """
 
-with open('PZ_14/hotline.txt', 'r', encoding='utf-8') as fail:
-    content = fail.readlines()
-    
-contener = 0
+import re
 
-with open('PZ_14/new_hotline.txt', 'w', encoding='utf-8') as fail:
-    
-    for slova in content:
-        if "Горячая линия" in slova:
-            split_slova = slova.split("Горячая линия")
-            
-            fail.write(split_slova[0] + "Горячая линия Министерства образования Ростовской области" + split_slova[1])
-        
-            contener += 1
-    fail.write(f"\n\nКоличество Добавлений: {contener}")
-    
-    list_my = []
-    for element in content:
+with open('hotline.txt', 'r', encoding='utf-8') as file:
+    content = file.read()
+
+    text = " Министерства образования Ростовской области"
+
+    count_dobavka = len(re.findall(r'Горячая линия', content))
+
+    text_file = re.sub(r'(Горячая линия)', r'\1' + text, content)
+
+with open('hotline.txt', 'r', encoding='utf-8') as file:
+    content_nomer = file.readlines()
+
+    list_texta = []
+    for element in content_nomer:
         split_elem = element.split()
-        list_my.append(split_elem)
+        list_texta.append(split_elem)
 
-    nomer_list = []
-    
-    list_my.pop()
-    for list_slesh in list_my:
-        print(list_slesh)
-        
-    for nomer in range(len(list_my)):
-        print(list_slesh[-1])
-        
-    
+    list_texta.pop()
+    phone = []
+    for i in range(len(list_texta)):
+        phone.append(list_texta[i][-1])
+
+    phone_number_03_50 = []
+    for number in phone:
+        if re.search(r'\d{2}(03|50)\b', number):
+            phone_number_03_50.append(number)
+    print("\nНомера:", *phone_number_03_50)
+
+with open('new_hotline.txt', 'w', encoding='utf-8') as file:
+    file.write(
+        f"{text_file}\n\n"
+        f"Количество произведённых Добавлений: {count_dobavka}"
+        f"\nКоличество номеров: {len(phone)}"
+        f"\nКоличество номеров на «03» и «50»: {len(phone_number_03_50)}"
+    )
