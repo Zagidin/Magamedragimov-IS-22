@@ -1,22 +1,29 @@
+"""
+    Приложение РАСПРЕДЕЛЕНИЕ ДОПОЛНИТЕЛЬНЫХ ОБЯЗАННОСТЕЙ для
+    некоторой организации. БД должна содержать таблицу Обязанности со следующей
+    структурой записи: ФИО работника, вид дополнительной работы, сумма оплаты, срок.
+"""
+
+
 import sqlite3
 
-db = sqlite3.connect('zagura.db')
+db = sqlite3.connect('PZ_15/zagura.db')
 cursor = db.cursor()
 
 cursor.execute('''
-CREATE TABLE IF NOT EXISTS Обязанности (
-    id INTEGER PRIMARY KEY,
-    ФИО TEXT,
-    Работа TEXT,
-    Сумма INTEGER,
-    Дата DATE
-)
+    CREATE TABLE IF NOT EXISTS Обязанности (
+        id INTEGER PRIMARY KEY,
+        ФИО TEXT,
+        Работа TEXT,
+        Сумма INTEGER,
+        Дата DATE
+    )
 ''')
 
 db.commit()
 db.close()
 
-db = sqlite3.connect('zagura.db')
+db = sqlite3.connect('PZ_15/zagura.db')
 cursor = db.cursor()
 
 input_print = [
@@ -36,7 +43,7 @@ cursor.execute(
 db.commit()
 db.close()
 
-db = sqlite3.connect('zagura.db')
+db = sqlite3.connect('PZ_15/zagura.db')
 cursor = db.cursor()
 
 cursor.execute("""SELECT * FROM Обязанности""")
@@ -46,4 +53,5 @@ content_baze = cursor.fetchall()
 db.commit()
 db.close()
 
-print(content_baze)
+for el in content_baze:
+    print(el)
