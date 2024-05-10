@@ -1,25 +1,37 @@
-# Многопоточность
+# import pickle
 
-from time import sleep
-from threading import Thread
+# class Student:
+#     def __init__(self, name, age, gpa):
+#         self.name = name
+#         self.age = age
+#         self.gpa = gpa
+        
+
+# def save_students(student, filename):
+#     with open(filename, "wb") as file:
+#         return pickle.dump(student, file)
+    
+# def load_student(filename):
+#     with open(filename, "wb") as file:
+#         return pickle.load(file)
+    
+# student1 = Student("Загадин", 16, 4.2)
+# student2 = Student("Ярослав", 17, 3.2)
+# student3 = Student("Олег", 17, 2.2)
+
+# list_student = [student1, student2, student3]
+# save_students(list_student, "Студенты.bin
 
 
-def main():
-    print("Process 1")
-    sleep(3)
-    print("Process One Good!")
+import cv2
 
+cap = cv2.VideoCapture(0)
 
-def main2():
-    print("Process 2")
-    sleep(3)
-    print("Process Two Good!")
+for i in range(30):
+    cap.read()
+ 
+ret, frame = cap.read()
 
+cv2.imwrite('cam.png', frame)   
 
-one_func = Thread(target=main)
-one_func.start()
-two_func = Thread(target=main2)
-two_func.start()
-
-# main()
-# main2()
+cap.release()

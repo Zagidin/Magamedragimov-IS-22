@@ -4,12 +4,12 @@ db = sqlite3.connect('zagura.db')
 cursor = db.cursor()
 
 cursor.execute('''
-CREATE TABLE IF NOT EXISTS Users (
-id INTEGER PRIMARY KEY,
-ФИО TEXT,
-Работа TEXT,
-Сумма INTEGER,
-Дата 
+CREATE TABLE IF NOT EXISTS Обязанности (
+    id INTEGER PRIMARY KEY,
+    ФИО TEXT,
+    Работа TEXT,
+    Сумма INTEGER,
+    Дата DATE
 )
 ''')
 
@@ -19,12 +19,19 @@ db.close()
 db = sqlite3.connect('zagura.db')
 cursor = db.cursor()
 
-fio, work = input("Введите Ваше ФИО: "), input("Введите Вид работы: ")
-pay, year = int(input("Введите сумму оплаты: ")), input("Введите срок: ")
+input_print = [
+    "Введите Ваше ФИО: ", 
+    "Введите Вид работы: ", 
+    "Введите сумму оплаты: ", 
+    "Введите срок: "
+]
 
-cursor.execute("""
-INSERT INTO Users (ФИО, Работа, Сумма, Дата) VALUES (?, ?, ?, ?), (fio, work, pay, year)
-""")
+fio, work, pay, year = [input(input_print[i]) for i in range(4)]
+
+cursor.execute(
+    """INSERT INTO Обязанности (ФИО, Работа, Сумма, Дата) VALUES (?, ?, ?, ?)""", 
+    (fio, work, int(pay), year,)
+)
 
 db.commit()
 db.close()
@@ -32,11 +39,10 @@ db.close()
 db = sqlite3.connect('zagura.db')
 cursor = db.cursor()
 
-cursor.execute("""
-SELECT * FROM Users
-""")
+cursor.execute("""SELECT * FROM Обязанности""")
 
 content_baze = cursor.fetchall()
+
 db.commit()
 db.close()
 
