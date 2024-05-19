@@ -1,3 +1,9 @@
+"""
+Создайте класс «Календарь», который имеет атрибуты год, месяц и день. Добавьте
+    методы для определения дня недели, проверки на високосный год и определения
+    количества дней в месяце.
+"""
+
 import re
 from datetime import datetime
 
@@ -8,16 +14,32 @@ class Calendar:
         self.month = month
         self.day = day
 
+    def __str__(self):
+        return (f"\nГод: {self.year}\n"
+                f"Месяц: {self.month:02d}\n"
+                f"Число: {self.day:02d}\n"
+                )
+
     def day_of_week(self):
-        days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+        days = [
+            "Понедельник",
+            "Вторник",
+            "Среда",
+            "Четверг",
+            "Пятница",
+            "Суббота",
+            "Воскресенье"
+        ]
+
         day_index = datetime(self.year, self.month, self.day).weekday()
+
         return days[day_index]
 
-    def is_leap_year(self):
+    def leap_year(self):
         if (self.year % 4 == 0 and self.year % 100 != 0) or (self.year % 400 == 0):
-            return "Является Високостным годом ( True )"
+            return "Является Високосным годом ( True )"
         else:
-            return "Не является Високостным годом ( False )"
+            return "Не является Високосным годом ( False )"
 
     def days_month(self):
         if self.month in [1, 3, 5, 7, 8, 10, 12]:
@@ -27,14 +49,17 @@ class Calendar:
         else:
             regular = r"\( \w* \)"
             
-            text = self.is_leap_year()
+            text = self.leap_year()
 
             match = re.search(regular, text)
             
             if match:
                 a = match.group()
-                a = a.replace("(", '')
-                a = a.replace(")", '')
+
+                del_replace = ["(", ")"]
+                for i in del_replace:
+                    a = a.replace(i, "")
+
             else:
                 print("Совпадение не найдено")
             
@@ -43,13 +68,18 @@ class Calendar:
             else:
                 return 28
 
-input_print = ["Напишите год: ", "Напишите месяц: ", "Напишите число: "]
-year, month, day = [int(input(input_print[i])) for i in range(3)]
 
-day1 = Calendar(year=year, month=month, day=day)
+def program():
+    input_print = ["Напишите год: ", "Напишите месяц: ", "Напишите число: "]
+    year, month, day = [int(input(input_print[i])) for i in range(3)]
 
-print(
-    f"\nДень недели: {day1.day_of_week()}\n"
-    f"Вид года: {day1.is_leap_year()}\n"
-    f"Количество дней в месяце: {day1.days_month()}\n"
-)
+    day1 = Calendar(year=year, month=month, day=day)
+
+    print(
+        f"\nДень недели: {day1.day_of_week()}\n"
+        f"Вид года: {day1.leap_year()}\n"
+        f"Количество дней в месяце: {day1.days_month()}\n"
+    )
+
+
+# program()
