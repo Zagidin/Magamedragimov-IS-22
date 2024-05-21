@@ -34,5 +34,5 @@ save_def([day1, day2, day3], name_file='file.pkl')
 files = ['file.pkl', 'file.bat']
 load_file = load_def(files[randint(0, 1)])
 
-for i in load_file:
-    print(i)
+for el in load_file:
+    print(el)
