@@ -29,10 +29,16 @@ day1, day2, day3 = (
     Calendar(2024, 7, 20)
 )
 
-save_def([day1, day2, day3], name_file='file.pkl')
 
-files = ['file.pkl', 'file.bat']
-load_file = load_def(files[randint(0, 1)])
+save_def([day1, day2, day3], name_file='file.bat')
+
+load_file = load_def('file.bat')
 
 for el in load_file:
-    print(el)
+    print(
+        f"Год: {el.year}\n"
+        f"Месяц: {el.month}\n"
+        f"Число: {el.day}\n"
+        f"Високосный день: {el.leap_year()}\n"
+        f"Дней в месяце: {el.days_month()}\n\n"
+    )

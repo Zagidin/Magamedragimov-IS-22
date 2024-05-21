@@ -14,11 +14,11 @@ class Calendar:
         self.month = month
         self.day = day
 
-    def __str__(self):
-        return (f"\nГод: {self.year}\n"
-                f"Месяц: {self.month:02d}\n"
-                f"Число: {self.day:02d}\n"
-                )
+    # def __str__(self):
+    #     return (f"\nГод: {self.year}\n"
+    #             f"Месяц: {self.month:02d}\n"
+    #             f"Число: {self.day:02d}\n"
+    #             )
 
     def day_of_week(self):
         days = [
@@ -82,4 +82,4 @@ def program():
     )
 
 
-program()
+# program()
