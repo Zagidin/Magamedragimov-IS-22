@@ -3,11 +3,13 @@
  если не является — вывести FALSE.
 """
 
+
 def delitel_three(num):
     if num <= 0:
         return False
     while num % 3 == 0:
         num /= 3
     return num == 1
+
 
 print(delitel_three(int(input("Введите число: "))))

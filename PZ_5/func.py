@@ -7,6 +7,7 @@
 
 from math import exp, log
 
+
 def powerl(a, b):
     if a <= 0:
         return 0
@@ -18,6 +19,7 @@ num1, num2, num3 = float(input('Введите число A: ')), float(input('�
 stepen = int(input('Введите степень(P): '))
 
 print(
-    f'\nРезультат первого условия: {powerl(num1, num2)}\n\nРезультат второго условия:\n\t\t{powerl(num1, stepen)}\n\t\t'
+    f'\nРезультат первого условия: {powerl(num1, num2)}\n'
+    f'\nРезультат второго условия:\n\t\t{powerl(num1, stepen)}\n\t\t'
     f'{powerl(num2, stepen)}\n\t\t{powerl(num3, stepen)}'
 )
