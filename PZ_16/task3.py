@@ -7,7 +7,6 @@
 
 import pickle
 
-from random import randint
 from task1 import Calendar
 
 
