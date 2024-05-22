@@ -26,7 +26,7 @@ def clear_placeholder(event):
 root = Tk()
 root.title("Обработка формы - Mozilla Firefox")
 root["bg"] = 'white'
-root.geometry("550x650")
+root.geometry("650x750")
 
 frame_config = Notebook(root)
 
@@ -96,7 +96,7 @@ option_menu2.grid(row=6, column=1, padx=10, pady=5, columnspan=3)
 label_0_sebe = Label(frame_form, text="Кратко о себе:", font=('Arial bold', 12))
 label_0_sebe.grid(row=7, column=0, padx=10, pady=10)
 placeholder = "Краткая информация\n  о ваших увлечениях..."
-text_widget = Text(frame_form, height=5, width=30)
+text_widget = Text(frame_form, height=6, width=30)
 text_widget.grid(row=8, column=1, padx=10, pady=5, sticky='w', columnspan=3)
 text_widget.insert("1.0", placeholder)
 text_widget.config(fg='grey')
