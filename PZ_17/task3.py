@@ -19,28 +19,50 @@
          удалить файл test.txt.
 """
 
+import shutil
 from os import *
 
+
 # Задание 1
-'''
-chdir('./PZ_11')
-print("Текущая дериктория: ", getcwd())
+
+chdir('../PZ_11')
+print("\nЗадание №1\nТекущая дериктория: ", getcwd())
 
 dir_11_list = [files for files in listdir()]
 
+dir_11_list_str = ''
 for el in dir_11_list:
-    print(el)
-'''
+    dir_11_list_str += el + ' '
+
+print("Cписок всех файлов: ", dir_11_list_str.replace(' ', ', '))
+
 # Задание 2
 
-chdir('.')
-print("Текущая дериктория: ", getcwd())
-# makedirs('test/test1')
+chdir('..')
+print("\nЗадание №2")
+makedirs('test/test1', exist_ok=True)
 
-start_dir = './PZ_6'
-finish_dir = './test'
+chdir('./PZ_6')
 
-files = listdir(start_dir)
+dir_6_list = [files for files in listdir()]
 
-for file in files:
-    replace(file, finish_dir)
+dir_6_list_str = ''
+for el in range(2):
+    dir_6_list_str += dir_6_list[el] + ' '
+    shutil.move(dir_6_list[el], '../test')
+
+chdir('../PZ_7')
+
+dir_7_list = [files for files in listdir()]
+
+for el in range(1):
+    shutil.move(dir_7_list[el], '../PZ_7/test.txt')
+
+for root, dirs, files in walk('./test'):
+    for file in files:
+        file_path = path.join(root, file)
+        file_size = path.getsize(file_path)
+        print(f'Файл: {file_path}, Размер файла: {file_size} байт')
+
+# Задание 3
+
