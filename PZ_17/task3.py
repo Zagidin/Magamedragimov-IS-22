@@ -42,8 +42,8 @@ os.chdir('..')
 os.makedirs("test/test1", exist_ok=True)
 os.chdir('./PZ_6')
 
-os.replace('list.py', '../test/list.py')
-os.replace('list2.py', '../test/list2.py')
+os.replace('list.py', '../PZ_6/list.py')
+os.replace('list2.py', '../PZ_6/list2.py')
 
 os.chdir('../PZ_7')
 os.replace('main.py', '../test/test1/test.txt')
