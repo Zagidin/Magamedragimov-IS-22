@@ -20,7 +20,6 @@
 """
 
 import os
-import time
 
 # Задание 1
 
@@ -69,6 +68,5 @@ os.startfile(pdf_file)
 
 # Задание 5
 
-time.sleep(0.10)
-print("Задание №5")
-os.remove("../test/test1/test.txt")
+# print("Задание №5")
+# os.remove("../test/test1/test.txt")
