@@ -26,7 +26,7 @@ def clear_placeholder(event):
 root = Tk()
 root.title("Обработка формы - Mozilla Firefox")
 root["bg"] = 'white'
-root.geometry("650x750")
+root.geometry("550x680")
 
 frame_config = Notebook(root)
 

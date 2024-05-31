@@ -4,31 +4,30 @@
     OS:
          перейдите в каталог PZ11. Выведите список всех файлов в этом каталоге. Имена
         вложенных подкаталогов выводить не нужно.
-        
+
          перейти в корень проекта, создать папку с именем test. В ней создать еще одну папку
         test1. В папку test переместить два файла из ПЗ6, а в папку test1 - один файл из ПЗ7.
         Файл из ПЗ7 переименовать в test.txt. Вывести в консоль информацию о размере
         файлов в папке test.
-        
+
          перейти в папку с PZ11, найти там файл с самым коротким именем, имя вывести в
         консоль. Использовать функцию basename () (os.path.basename()).
-        
+
          перейти в любую папку где есть отчет в формате .pdf и «запустите» файл в
         привязанной к нему программе. Использовать функцию os.startfile().
-        
+
          удалить файл test.txt.
 """
 
-import shutil
-from os import *
-
+import os
+import time
 
 # Задание 1
 
-chdir('../PZ_11')
-print("\nЗадание №1\nТекущая дериктория: ", getcwd())
+os.chdir('../PZ_11')
+print("\nЗадание №1\nТекущая дериктория: ", os.getcwd())
 
-dir_11_list = [files for files in listdir()]
+dir_11_list = [files for files in os.listdir()]
 
 dir_11_list_str = ''
 for el in dir_11_list:
@@ -36,33 +35,40 @@ for el in dir_11_list:
 
 print("Cписок всех файлов: ", dir_11_list_str.replace(' ', ', '))
 
+
 # Задание 2
 
-chdir('..')
 print("\nЗадание №2")
-makedirs('test/test1', exist_ok=True)
+os.chdir('..')
+os.makedirs("test/test1", exist_ok=True)
+os.chdir('./PZ_6')
 
-chdir('./PZ_6')
+os.replace('list.py', '../test/list.py')
+os.replace('list2.py', '../test/list2.py')
 
-dir_6_list = [files for files in listdir()]
-
-dir_6_list_str = ''
-for el in range(2):
-    dir_6_list_str += dir_6_list[el] + ' '
-    shutil.move(dir_6_list[el], '../test')
-
-chdir('../PZ_7')
-
-dir_7_list = [files for files in listdir()]
-
-for el in range(1):
-    shutil.move(dir_7_list[el], '../PZ_7/test.txt')
-
-for root, dirs, files in walk('./test'):
-    for file in files:
-        file_path = path.join(root, file)
-        file_size = path.getsize(file_path)
-        print(f'Файл: {file_path}, Размер файла: {file_size} байт')
+os.chdir('../PZ_7')
+os.replace('main.py', '../test/test1/test.txt')
+os.chdir('../test')
+print("Размер первого файла:", os.stat("list.py").st_size)
+print("Размер второго файла:", os.stat("list2.py").st_size)
 
 # Задание 3
 
+print("Задание №3")
+os.chdir('../PZ_11')
+files = os.listdir('.')
+shortest_name_file = min(files, key=lambda x: len(os.path.basename(x)))
+print(f'\nФайл с самым коротким названием из папки PZ_11: {os.path.basename(shortest_name_file)}')
+
+# Задание 4
+
+print("Задание №4")
+os.chdir('../reports/PZ_17')
+pdf_file = 'PZ_17.pdf'
+os.startfile(pdf_file)
+
+# Задание 5
+
+time.sleep(0.10)
+print("Задание №5")
+os.remove("../test/test1/test.txt")
